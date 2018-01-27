@@ -4,9 +4,9 @@
 # their sequence for the user.
 
 DNASequence = "ATCGATCGATCGATCGACTGACTAGTCATAGCTATGCATGTAGCTACTCGATCGATCGATCGATCGATCGATCGATCGATCGATCATGCTATCATCGATCGATATCGATGCATCGACTACTAT"
-exon1 = DNASequence [0:63]
-intron = DNASequence[63:90].lower()
-exon2 = DNASequence[90:]
+exon1 = DNASequence [0:64]
+intron = DNASequence[64:91].lower()
+exon2 = DNASequence[91:]
 
 print "The first exon is: %s" % exon1
 print "The intron is: %s" % intron
