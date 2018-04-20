@@ -48,3 +48,39 @@ def LowAT(ATcontent):
         return (True)
     else:
         return (False)
+        
+        
+#the goal of this function is to take in a DNA sequence and translate it into
+#an amino acid string an return this value. 
+def translate_dna(sequence):
+    #Amino acid translation chart. Used to convert DNA to amino acids.
+    gencode = {
+ 'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
+ 'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
+ 'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
+ 'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',
+ 'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
+ 'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
+ 'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
+ 'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
+ 'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
+ 'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
+ 'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
+ 'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
+ 'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
+ 'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
+ 'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
+ 'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W'}
+ 
+    #Set a changeable final codon position based on the sequence length 
+    Last_start_pos = len(sequence) - 2 
+    protein = ""
+    #range function gives us only codon in the range of the DNA sequence
+    for codon_start in range(0,Last_start_pos,3):
+        #seperates the sequence into codons
+        codon = sequence[codon_start:codon_start+3]
+        #gets the amino acid from the dictionary based on the codon
+        amino_acid = gencode.get(codon.upper())
+        #builds the protein string
+        protein = protein + amino_acid
+    return(protein) 
